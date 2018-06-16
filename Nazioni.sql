@@ -135,7 +135,7 @@ INSERT INTO nations (id, nation) VALUES ("Z116","IRLANDA=EIRE");
 INSERT INTO nations (id, nation) VALUES ("Z117","ISLANDA");
 INSERT INTO nations (id, nation) VALUES ("Z721","ISOLE CILENE (PASQUA E SALA Y GOMEZ)");
 INSERT INTO nations (id, nation) VALUES ("Z226","ISRAELE");
-INSERT INTO nations (id, nation) VALUES ("ITA","ITALIA");
+INSERT INTO nations (id, nation) VALUES ("ITAL","ITALIA");
 INSERT INTO nations (id, nation) VALUES ("Z118","JUGOSLAVIA");
 INSERT INTO nations (id, nation) VALUES ("Z152","KAZAKHISTAN");
 INSERT INTO nations (id, nation) VALUES ("Z255","KAZAKHISTAN");
