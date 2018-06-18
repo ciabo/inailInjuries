@@ -13731,3 +13731,5 @@ INSERT INTO codici (id, descrizione) VALUES ("Y91.9","Ruolo dell'alcol, non altr
 INSERT INTO codici (id, descrizione) VALUES ("Y95.0","Condizione nosocomiale");
 INSERT INTO codici (id, descrizione) VALUES ("Y96.0","Condizione associata al lavoro");
 INSERT INTO codici (id, descrizione) VALUES ("Y97.0","Condizione associata all'inquinamento ambientale");
+INSERT INTO codici (id, descrizione) VALUES ("997","Other complications of procedures not elsewhere classified");
+INSERT INTO codici (id, descrizione) VALUES ("998","Complications affecting specified body system not elsewhere classified");
