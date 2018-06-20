@@ -55,23 +55,88 @@ for i in range(3,297):
             f.write("INSERT INTO nazioni (id, nazione) VALUES (\"" + list[i][0] + "\",\"" + list[i][1] + "\");\n");
     f.close()
 
+
+
 document = openpyxl.load_workbook('data/SediINAIL.xlsx');
 sheet = document.get_sheet_names();
 list = [];
+with open('data/province.txt') as f:
+    content = f.readlines()
+listaProvince=[];
+for row in content:
+    tmp=[]
+    rowElements=row.split(",");
+    for i in range(0,len(rowElements)):
+        if(i!=2): #per evitare di copiare anche la regione
+            tmp.append(rowElements[i]);
+    listaProvince.append(tmp);
 for i in range(2,2350):
-    tmp = [document.get_sheet_by_name(sheet[0]).cell(row=i, column=3).value, #id - provincia
-           document.get_sheet_by_name(sheet[0]).cell(row=i, column=2).value, #sede - denominazione sede
-           document.get_sheet_by_name(sheet[0]).cell(row=i, column=8).value, #cap - cap
-           document.get_sheet_by_name(sheet[0]).cell(row=i, column=11).value, #email - email
-           document.get_sheet_by_name(sheet[0]).cell(row=i, column=13).value];  #telefono - telefono
+    provincia="";
+    siglaProvincia="";
+    cap = document.get_sheet_by_name(sheet[0]).cell(row=i, column=10).value;
+    if ((cap>=86010 and cap<=86049) or (cap==86100)):
+        provincia="campobasso";
+        siglaProvincia="CB";
+    elif((cap>=86070 and cap<=86097) or (cap==86170)):
+        provincia = "Isernia";
+        siglaProvincia = "IS";
+    if ((cap>=33010 and cap<=33059) or (cap==33100)):
+        provincia="Udine";
+        siglaProvincia="UD";
+    elif((cap>= 33070 and cap<=33099) or (cap==33170)):
+        provincia = "Pordenone";
+        siglaProvincia = "PN";
+    if((cap>=8010 and cap<=8049) or cap==8100):
+        provincia = "Nuoro";
+        siglaProvincia = "NU";
+    elif ((cap >= 9121 and cap <= 9134) or (cap >= 9010 and cap <= 9048)):
+        provincia = "Cagliari";
+        siglaProvincia = "CA";
+    elif (cap >= 9010 and cap <= 9066):
+        provincia = "Sud Sardegna";
+        siglaProvincia = "SU";
+    elif ((cap >= 9070 and cap <= 9099) or (str(cap).zfill(5)[:3]=="080") or (cap==9170)):
+        provincia = "Oristano";
+        siglaProvincia = "OR";
+    if ((cap>=34010 and cap<=34018) or (cap>=34121 and cap<=34151)):
+        provincia="TRIESTE";
+        siglaProvincia="TS";
+    elif((cap>=34070  and cap<=34079) or (cap==34170)):
+        provincia = "GORIZIA";
+        siglaProvincia = "GO";
+    else:
+        cap=str(cap).zfill(5)[:3];
+        for p in listaProvince:
+            dim=len(p);
+            if(dim==3):
+                print(p)
+            elif(dim==4):
+                if (cap == p[2][:3] or cap==p[3][:3]):
+                    provincia = p[0];
+                    siglaProvincia = p[1];
+                    break;
+            else:
+                if (cap == p[2][:3] or cap==p[3][:3] or cap==p[4][:3]):
+                    provincia = p[0];
+                    siglaProvincia = p[1];
+                    break;
+
+    tmp = [document.get_sheet_by_name(sheet[0]).cell(row=i, column=3).value,  # id - provincia
+           document.get_sheet_by_name(sheet[0]).cell(row=i, column=2).value,  # sede - denominazione sede
+           document.get_sheet_by_name(sheet[0]).cell(row=i, column=10).value,  # cap - cap servito
+           document.get_sheet_by_name(sheet[0]).cell(row=i, column=17).value,  # latitudine - latitudine
+           document.get_sheet_by_name(sheet[0]).cell(row=i, column=18).value,  #longitudine
+           provincia,siglaProvincia];  # longitudine - longitudine
     list.append(tmp);
+
     f = open('data/SQLSedi.sql', 'w')
     f.write("CREATE TABLE IF NOT EXISTS sedi (id INTEGER NOT NULL AUTO_INCREMENT, codice INTEGER, sede varchar(45), cap INTEGER,"
-            " email varchar(40), telefono varchar(40),PRIMARY KEY (id));\n")
+            " latitudine varchar(40), longitudine varchar(40), provincia varchar(30),siglaProvincia varchar(2),PRIMARY KEY (id));\n")
     for i in range(0, len(list)):
-        f.write("INSERT INTO sedi (codice, sede, cap, email, telefono) VALUES (" + str(list[i][0]) + ",\"" + list[i][1] + "\"," + str(list[i][2]) + ",\"" + list[i][3] + "\",\"" + str(list[i][4]) + "\");\n");
+        f.write("INSERT INTO sedi (codice, sede, cap, latitudine, longitudine,provincia,siglaProvincia) VALUES (" + str(list[i][0]) + ",\"" + list[i][1] + "\"," + str(list[i][2]).zfill(5) + ",\"" + str(list[i][3]) + "\",\"" + str(list[i][4]) + "\",\"" + list[i][5] + "\",\"" + list[i][6] + "\");\n");
     f.close();
 
+'''
 regioni = ["Abruzzo", "Basilicata", "Calabria", "Campania", "EmiliaRomagna", "FriuliVeneziaGiulia", "Lazio", "Liguria",
            "Lombardia", "Marche", "Molise", "Piemonte", "Puglia", "Sardegna", "Sicilia", "Toscana", "TrentinoAltoAdige",
            "Umbria", "ValledAosta", "Veneto"];
@@ -132,3 +197,4 @@ for regione in regioni:
                     ICD10accertato + "\", " + str(asbestoCorrelata) + ", " + str(
                 giorniIndennizzati) + ",\"" + settore + "\");\n");
 f.close();
+'''
