@@ -1,0 +1,97 @@
+Roma,RM,Lazio,001xx,000xx
+Viterbo,VT,Lazio,010xx,011xx
+Rieti,RI,Lazio,020xx,021xx
+Frosinone,FR,Lazio,030xx,031xx
+Latina,LT,Lazio,040xx,041xx
+Terni,TR,Umbria,050xx,051xx
+Perugia,PG,Umbria,061xx,060xx
+Torino,TO,Piemonte,101xx,100xx
+Aosta,AO,Valle d'Aosta,110xx,111xx
+Cuneo,CN,Piemonte,120xx,121xx
+Vercelli,VC,Piemonte,130xx,131xx
+Biella,BI,Piemonte,138xx,139xx
+Asti,AT,Piemonte,140xx,141xx
+Alessandria,AL,Piemonte,151xx,150xx
+Genova,GE,Liguria,161xx,160xx
+Savona,SV,Liguria,170xx,171xx
+Imperia,IM,Liguria,180xx,181xx
+La Spezia,SP,Liguria,191xx,190xx
+Milano,MI,Lombardia,201xx,200xx
+Monza e Brianza,MB,Lombardia,208xx,209xx
+Varese,VA,Lombardia,210xx,211xx
+Como,CO,Lombardia,220xx,221xx
+Sondrio,SO,Lombardia,230xx,231xx
+Lecco,LC,Lombardia,238xx,239xx
+Bergamo,BG,Lombardia,241xx,240xx
+Brescia,BS,Lombardia,251xx,250xx
+Cremona,CR,Lombardia,260xx,261xx
+Lodi,LO,Lombardia,268xx,269xx
+Pavia,PV,Lombardia,270xx,271xx
+Novara,NO,Piemonte,280xx,281xx
+Verbano-Cusio-Ossola,VB,Piemonte,289xx,288xx
+Piacenza,PC,Emilia-Romagna,291xx,290xx
+Venezia,VE,Veneto,301xx,300xx
+Treviso,TV,Veneto,310xx,311xx
+Belluno,BL,Veneto,320xx,321xx
+Padova,PD,Veneto,351xx,350xx
+Vicenza,VI,Veneto,360xx,361xx
+Verona,VR,Veneto,371xx,370xx
+Trento,TN,Trentino-Alto Adige,381xx,380xx
+Bolzano,BZ,Trentino-Alto Adige,390xx,391xx
+Bologna,BO,Emilia-Romagna,401xx,400xx
+Modena,MO,Emilia-Romagna,411xx,410xx
+Reggio Emilia,RE,Emilia-Romagna,421xx,420xx
+Parma,PR,Emilia-Romagna,431xx,430xx
+Ferrara,FE,Emilia-Romagna,441xx,440xx
+Rovigo,RO,Veneto,450xx,451xx
+Mantova,MN,Lombardia,460xx,421xx
+Forlì-Cesena,FC,Emilia-Romagna,471xx,470xx,475xx
+Rimini,RN,Emilia-Romagna,479xx,478xx
+Ravenna,RA,Emilia-Romagna,481xx,480xx
+Firenze,FI,Toscana,501xx,500xx
+Pistoia,PT,Toscana,510xx,511xx
+Arezzo,AR,Toscana,520xx,521xx
+Siena,SI,Toscana,530xx,531xx
+Massa-Carrara,MS,Toscana,540xx,541xx
+Lucca,LU,Toscana,550xx,551xx
+Pisa,PI,Toscana,561xx,560xx
+Livorno,LI,Toscana,571xx,570xx
+Grosseto,GR,Toscana,580xx,581xx
+Prato,PO,Toscana,590xx,591xx
+Ancona,AN,Marche,601xx,600xx
+Pesaro e Urbino,PU,Marche,610xx,611xx
+Macerata,MC,Marche,620xx,621xx
+Ascoli Piceno,AP,Marche,630xx,631xx
+Fermo,FM,Marche,638xx,639xx
+Teramo,TE,Abruzzo,640xx,641xx
+Pescara,PE,Abruzzo,651xx,650xx
+Chieti,CH,Abruzzo,660xx,661xx
+L'Aquila,AQ,Abruzzo,670xx,671xx
+Bari,BA,Puglia,701xx,700xx
+Foggia,FG,Puglia,710xx,711xx
+Brindisi,BR,Puglia,720xx,721xx
+Lecce,LE,Puglia,730xx,731xx
+Taranto,TA,Puglia,740xx,741xx
+Matera,MT,Basilicata,750xx,751xx
+Barletta-Andria-Trani,BT,Puglia,760xx,761xx
+Napoli,NA,Campania,801xx,800xx
+Caserta,CE,Campania,810xx,811xx
+Benevento,BN,Campania,820xx,821xx
+Avellino,AV,Campania,830xx,831xx
+Salerno,SA,Campania,841xx,840xx
+Potenza,PZ,Basilicata,850xx,851xx
+Cosenza,CS,Calabria,870xx,871xx
+Catanzaro,CZ,Calabria,880xx,881xx
+Crotone,KR,Calabria,888xx,889xx
+Reggio Calabria,RC,Calabria,891xx,890xx
+Vibo Valentia,VV,Calabria,898xx,899xx
+Palermo,PA,Sicilia,901xx,900xx
+Trapani,TP,Sicilia,910xx,911xx
+Agrigento,AG,Sicilia,920xx,921xx
+Caltanissetta,CL,Sicilia,930xx,931xx
+Enna,EN,Sicilia,940xx,941xx
+Catania,CT,Sicilia,951xx,950xx
+Siracusa,SR,Sicilia,960xx,961xx
+Ragusa,RG,Sicilia,970xx,971xx
+Messina,ME,Sicilia,981xx,980xx
+Sassari,SS,Sardegna,070xx,071xx
