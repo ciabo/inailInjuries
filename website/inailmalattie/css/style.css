@@ -1,0 +1,75 @@
+/* CSS Document */
+
+*{
+	margin:0;
+	padding: 0;
+}
+
+body {
+	font-family:"Helvetica Neue", Helvetica, "sans-serif";
+    font-size: 14px;
+    line-height: 1.4em;
+    color: #333;
+    background-color: #fff;
+}
+
+.navbar {
+	position: fixed;
+	width: 100%;
+	background-color: #222;
+    border-color: #080808;
+	min-height:50px;
+}
+
+.container {
+	height:50px;
+	width: 95%;
+	margin: 0 auto;
+}
+
+
+#menu-primary li {
+	float: left;
+	min-height: 50px;
+}
+
+#menu-primary li a:link, #menu-primary li a:visited, #menu-secondary li a:link, #menu-secondary li a:visited {
+	color: #9d9d9d;
+	text-decoration: none;
+	padding: 15px 15px 0 15px;
+	display: block;
+}
+
+#menu-primary li a:hover, #menu-secondary li a:hover {
+	color:#fff; /* bianco */
+}
+
+.navbar .container {
+	position:relative;
+}
+
+
+#menu-secondary li {
+	float: right;
+	min-height: 50px;
+}
+
+/*End navbar*/
+
+h1.title {
+	font-size: 36px;
+	font-weight:500;
+	padding: 65px 0px 0px 40px;
+}
+
+.columns {
+	text-align: left;
+	-moz-column-count:2;
+	-moz-column-gap:1em;
+	-webkit-column-count:2;
+	-webkit-column-gap:1em;
+	column-gap:1em;
+	column-count:2;
+	
+}
+

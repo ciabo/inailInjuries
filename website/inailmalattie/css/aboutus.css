@@ -1,0 +1,22 @@
+/*CSS Document*/
+
+*{
+	margin: 0;
+	padding: 0;
+  }
+  
+body {
+	font-family:"Helvetica Neue", Helvetica, "sans-serif";
+    font-size: 14px;
+    line-height: 1.4em;
+    color: #333;
+    background-color: #fff;
+}
+
+.us {
+	padding: 8px 0 0 4px;
+}
+
+.us li {
+	margin: 8px 0 9px 4px;
+}
