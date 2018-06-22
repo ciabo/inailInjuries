@@ -7,8 +7,7 @@
 		<meta name="description" content="statistiche malattie"/>
 		<link href="css/style.css" rel="stylesheet" type="text/css"/>
 		<script type="text/javascript" src="scripts\jquery-3.3.1.min.js"></script>
-		<script type="text/javascript" src="scripts\improvements.js"></script>
-		<script language="javascript" type="text/javascript">
+		<script language="javascript" type="text/javascript"></script>
 	</head>
 	
 	<body>
@@ -27,19 +26,30 @@
 					</li>
 				</ul>
 			</div>
-			
 		</nav>
-		
 		<div class="containermain">
-			<h1 class="title">Analisi malattie dei lavoratori per regione</h1>
+			<h1 align="center" class="title">Analisi malattie dei lavoratori per regione</h1>
 		
-		<div class="columns">
+		<!--<div class="columns"> evntuale implementazione 2 colonne da sistemare-->
+			
+			<div id="map"></div>
+			<link href="leaflet/leaflet.css" rel="stylesheet" type="text/css"/> <!-- mettere bower se non funziona-->
+			<script type="text/javascript" src="leaflet\leaflet.js"></script> <!-- mettere bower se non funziona-->
+			<link href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.css" rel="stylesheet" type="text/css">
+			<link href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.Default.css" rel="stylesheet" type="text/css">
+			<script type= "text/javascript" src="https://unpkg.com/leaflet.markercluster@1.3.0/dist/leaflet.markercluster.js"></script>
+			<script type= "text/javascript" src="scripts\realworld.10000.js"></script>
+			<script type="text/javascript" src="scripts\improvements.js"></script>
+		
+			
 			<div class="descrizione">
 				<p align="left">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 				Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
 				dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
 				non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p> 
 			</div>
-		</div>
+				
+		<!--</div>-->
+		
 	</body>
 </html>
