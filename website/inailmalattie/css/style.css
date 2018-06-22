@@ -62,15 +62,19 @@ h1.title {
 	padding: 65px 0px 15px 40px;
 }
 
+#filter{
+	padding: 0 0 0 20px;
+}
+
 /*caso implementazione 2 colonne*/
-.columns {
-	padding: 15px 0px 0 30px;
+.columnsfilter {
+	padding: 15px 0px 0 5pxpx;
 	text-align: left;
 	-moz-column-count:2;
-	-moz-column-gap:1em;
+	-moz-column-gap:0em;
 	-webkit-column-count:2;
-	-webkit-column-gap:1em;
-	column-gap:1em;
+	-webkit-column-gap:0em;
+	column-gap:0em;
 	column-count:2;
 	
 }
@@ -80,7 +84,7 @@ h1.title {
 	margin: 10px 0 15px 20px;
 	position:relative;
 	height: 300px;
-	width: 50%
+	width: 70%
 }
 
 #progress {
