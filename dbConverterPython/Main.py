@@ -38,7 +38,7 @@ for i in range(0,len(list)):
 f.write("INSERT INTO codici (id, descrizione) VALUES (\"997\",\"Other complications of procedures not elsewhere classified\");\n");
 f.write("INSERT INTO codici (id, descrizione) VALUES (\"998\",\"Complications affecting specified body system not elsewhere classified\");\n");
 F.write("CREATE VIEW tumori AS SELECT id, descrizione FROM codici where descrizione LIKE \"%tumore maligno%\" or descrizione LIKE \"%tumori maligni%\"
-OR descrizione LIKE \"%carcinoma%\" OR descrizione LIKE \"%melanoma%\" OR descrizione LIKE \"%linfom%\" OR descrizione LIKE \"%Mesotelioma%\" OR descrizione LIKE \"%sarcoma%\" OR descrizione LIKE \"%leucemi%\"");
+OR descrizione LIKE \"%carcinoma%\" OR descrizione LIKE \"%melanoma%\" OR descrizione LIKE \"%linfom%\" OR descrizione LIKE \"%Mesotelioma%\" OR descrizione LIKE \"%sarcoma%\" OR descrizione LIKE \"%leucemi%\";");
 f.close()
 
 document = openpyxl.load_workbook('data/ucm.xlsx');
