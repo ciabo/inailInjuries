@@ -2,8 +2,9 @@ import openpyxl;
 from pandas import *
 import datetime;
 
+#codici icd10
+'''
 document = openpyxl.load_workbook('data/codici-ICD10-descrizioni.xlsx');
-
 sheets = document.get_sheet_names();
 list = [];
 for i in range(0, len(sheets)):
@@ -37,9 +38,10 @@ for i in range(0,len(list)):
     f.write("INSERT INTO codici (id, descrizione) VALUES (\""+list[i][0]+"\",\""+list[i][1]+"\");\n");
 f.write("INSERT INTO codici (id, descrizione) VALUES (\"997\",\"Other complications of procedures not elsewhere classified\");\n");
 f.write("INSERT INTO codici (id, descrizione) VALUES (\"998\",\"Complications affecting specified body system not elsewhere classified\");\n");
-F.write("CREATE VIEW tumori AS SELECT id, descrizione FROM codici where descrizione LIKE \"%tumore maligno%\" or descrizione LIKE \"%tumori maligni%\"
-OR descrizione LIKE \"%carcinoma%\" OR descrizione LIKE \"%melanoma%\" OR descrizione LIKE \"%linfom%\" OR descrizione LIKE \"%Mesotelioma%\" OR descrizione LIKE \"%sarcoma%\" OR descrizione LIKE \"%leucemi%\";");
 f.close()
+
+
+#Nazioni
 
 document = openpyxl.load_workbook('data/ucm.xlsx');
 sheet = document.get_sheet_names();
@@ -56,12 +58,17 @@ for i in range(3,297):
         else:
             f.write("INSERT INTO nazioni (id, nazione) VALUES (\"" + list[i][0] + "\",\"" + list[i][1] + "\");\n");
     f.close()
+'''
 
-
+#Sedi inail
 
 document = openpyxl.load_workbook('data/SediINAIL.xlsx');
 sheet = document.get_sheet_names();
 list = [];
+
+province = openpyxl.load_workbook('data/provinceCoordinate.xlsx');
+sheetProvince = province.get_sheet_names();
+
 with open('data/province.txt') as f:
     content = f.readlines()
 listaProvince=[];
@@ -72,12 +79,13 @@ for row in content:
         if(i!=2): #per evitare di copiare anche la regione
             tmp.append(rowElements[i]);
     listaProvince.append(tmp);
+
 for i in range(2,2350):
     provincia="";
     siglaProvincia="";
     cap = document.get_sheet_by_name(sheet[0]).cell(row=i, column=10).value;
     if ((cap>=86010 and cap<=86049) or (cap==86100)):
-        provincia="campobasso";
+        provincia="Campobasso";
         siglaProvincia="CB";
     elif((cap>=86070 and cap<=86097) or (cap==86170)):
         provincia = "Isernia";
@@ -101,10 +109,10 @@ for i in range(2,2350):
         provincia = "Oristano";
         siglaProvincia = "OR";
     if ((cap>=34010 and cap<=34018) or (cap>=34121 and cap<=34151)):
-        provincia="TRIESTE";
+        provincia="Trieste";
         siglaProvincia="TS";
     elif((cap>=34070  and cap<=34079) or (cap==34170)):
-        provincia = "GORIZIA";
+        provincia = "Gorizia";
         siglaProvincia = "GO";
     else:
         cap=str(cap).zfill(5)[:3];
@@ -122,22 +130,33 @@ for i in range(2,2350):
                     provincia = p[0];
                     siglaProvincia = p[1];
                     break;
-
+    latitudineProvincia=0;
+    longitudineProvincia=0;
+    for j in range(1,7983):
+        if (provincia==province.get_sheet_by_name(sheetProvince[0]).cell(row=j,column=1).value):
+            latitudineProvincia=province.get_sheet_by_name(sheetProvince[0]).cell(row=j,column=21).value;
+            longitudineProvincia=province.get_sheet_by_name(sheetProvince[0]).cell(row=j,column=22).value;
     tmp = [document.get_sheet_by_name(sheet[0]).cell(row=i, column=3).value,  # id - provincia
            document.get_sheet_by_name(sheet[0]).cell(row=i, column=2).value,  # sede - denominazione sede
            document.get_sheet_by_name(sheet[0]).cell(row=i, column=10).value,  # cap - cap servito
            document.get_sheet_by_name(sheet[0]).cell(row=i, column=17).value,  # latitudine - latitudine
-           document.get_sheet_by_name(sheet[0]).cell(row=i, column=18).value,  #longitudine
-           provincia,siglaProvincia];  # longitudine - longitudine
+           document.get_sheet_by_name(sheet[0]).cell(row=i, column=18).value,  #longitudine -longitudine
+           provincia,siglaProvincia,latitudineProvincia,longitudineProvincia];
     list.append(tmp);
 
     f = open('data/SQLSedi.sql', 'w')
     f.write("CREATE TABLE IF NOT EXISTS sedi (id INTEGER NOT NULL AUTO_INCREMENT, codice INTEGER, sede varchar(45), cap INTEGER,"
-            " latitudine varchar(40), longitudine varchar(40), provincia varchar(30),siglaProvincia varchar(2),PRIMARY KEY (id));\n")
+            " latitudine varchar(40), longitudine varchar(40), provincia varchar(30),siglaProvincia varchar(2),"
+            "latitudineProvincia VARCHAR(40), longitudineProvincia VARCHAR(40), PRIMARY KEY (id));\n")
+    f.write("CREATE VIEW singolesedi AS SELECT DISTINCT codice, latitudineProvincia, longitudineProvincia from sedi;")
     for i in range(0, len(list)):
-        f.write("INSERT INTO sedi (codice, sede, cap, latitudine, longitudine,provincia,siglaProvincia) VALUES (" + str(list[i][0]) + ",\"" + list[i][1] + "\"," + str(list[i][2]).zfill(5) + ",\"" + str(list[i][3]) + "\",\"" + str(list[i][4]) + "\",\"" + list[i][5] + "\",\"" + list[i][6] + "\");\n");
+        f.write("INSERT INTO sedi (codice, sede, cap, latitudine, longitudine,provincia,siglaProvincia,latitudineProvincia,longitudineProvincia) VALUES (" + str(list[i][0]) + ",\"" + list[i][1] + "\"," + str(list[i][2]).zfill(5) + ",\"" + str(list[i][3]) + "\",\"" + str(list[i][4]) + "\",\"" + list[i][5] + "\",\"" + list[i][6] + "\",\"" + str(list[i][7]) + "\",\"" + str(list[i][8]) + "\");\n");
     f.close();
 
+
+
+
+#datiSemestrali
 '''
 regioni = ["Abruzzo", "Basilicata", "Calabria", "Campania", "EmiliaRomagna", "FriuliVeneziaGiulia", "Lazio", "Liguria",
            "Lombardia", "Marche", "Molise", "Piemonte", "Puglia", "Sardegna", "Sicilia", "Toscana", "TrentinoAltoAdige",
