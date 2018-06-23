@@ -44,8 +44,8 @@ Reggio Emilia,RE,Emilia-Romagna,421xx,420xx
 Parma,PR,Emilia-Romagna,431xx,430xx
 Ferrara,FE,Emilia-Romagna,441xx,440xx
 Rovigo,RO,Veneto,450xx,451xx
-Mantova,MN,Lombardia,460xx,421xx
-Forlì-Cesena,FC,Emilia-Romagna,471xx,470xx,475xx
+Mantova,MN,Lombardia,460xx,421xx,461xx
+Forli-Cesena,FC,Emilia-Romagna,471xx,470xx,475xx
 Rimini,RN,Emilia-Romagna,479xx,478xx
 Ravenna,RA,Emilia-Romagna,481xx,480xx
 Firenze,FI,Toscana,501xx,500xx
