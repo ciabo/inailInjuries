@@ -80,7 +80,7 @@ for row in content:
             tmp.append(rowElements[i]);
     listaProvince.append(tmp);
 
-for i in range(2,2350):
+for i in range(2,2352):
     provincia="";
     siglaProvincia="";
     cap = document.get_sheet_by_name(sheet[0]).cell(row=i, column=10).value;
@@ -139,18 +139,16 @@ for i in range(2,2350):
     tmp = [document.get_sheet_by_name(sheet[0]).cell(row=i, column=3).value,  # id - provincia
            document.get_sheet_by_name(sheet[0]).cell(row=i, column=2).value,  # sede - denominazione sede
            document.get_sheet_by_name(sheet[0]).cell(row=i, column=10).value,  # cap - cap servito
-           document.get_sheet_by_name(sheet[0]).cell(row=i, column=17).value,  # latitudine - latitudine
-           document.get_sheet_by_name(sheet[0]).cell(row=i, column=18).value,  #longitudine -longitudine
            provincia,siglaProvincia,latitudineProvincia,longitudineProvincia];
     list.append(tmp);
 
     f = open('data/SQLSedi.sql', 'w')
     f.write("CREATE TABLE IF NOT EXISTS sedi (id INTEGER NOT NULL AUTO_INCREMENT, codice INTEGER, sede varchar(45), cap INTEGER,"
-            " latitudine varchar(40), longitudine varchar(40), provincia varchar(30),siglaProvincia varchar(2),"
+            "provincia varchar(30),siglaProvincia varchar(2),"
             "latitudineProvincia VARCHAR(40), longitudineProvincia VARCHAR(40), PRIMARY KEY (id));\n")
-    f.write("CREATE VIEW singolesedi AS SELECT DISTINCT codice, latitudineProvincia, longitudineProvincia from sedi;")
     for i in range(0, len(list)):
-        f.write("INSERT INTO sedi (codice, sede, cap, latitudine, longitudine,provincia,siglaProvincia,latitudineProvincia,longitudineProvincia) VALUES (" + str(list[i][0]) + ",\"" + list[i][1] + "\"," + str(list[i][2]).zfill(5) + ",\"" + str(list[i][3]) + "\",\"" + str(list[i][4]) + "\",\"" + list[i][5] + "\",\"" + list[i][6] + "\",\"" + str(list[i][7]) + "\",\"" + str(list[i][8]) + "\");\n");
+        f.write("INSERT INTO sedi (codice, sede, cap,provincia,siglaProvincia,latitudineProvincia,longitudineProvincia) VALUES (" + str(list[i][0]) + ",\"" + list[i][1] + "\"," + str(list[i][2]).zfill(5) + ",\"" + str(list[i][3]) + "\",\"" + str(list[i][4]) + "\",\"" + str(list[i][5]) + "\",\"" + str(list[i][6]) + "\");\n");
+    f.write("CREATE VIEW singolesedi AS SELECT DISTINCT codice, latitudineProvincia, longitudineProvincia from sedi;")
     f.close();
 
 
