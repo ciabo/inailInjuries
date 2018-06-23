@@ -18,13 +18,13 @@
   				return false;
 			 });
 		  });
-	   </script>
-    
+ 
+        </script>
     
     </head>
 	
 	<body>
-		<nav class="navbar">
+		<nav class="navbar" id="navb">
 			<div class="container">
 				<ul id="menu-primary">
 					<li><a href="https://github.com/ciabo/inailInjuries/blob/master/website/inailmalattie/aboutus.html">About us</a></li>
@@ -38,7 +38,7 @@
 						</div>
 					</li>
 				</ul>
-        <a href="#" class="toggle-menu hidden-lg">
+        <a href="#" class="toggle-menu hidden-lg" id="togmen">
             <span>
             
             </span>
@@ -55,28 +55,23 @@
 		<form id="filter">
 		<!--</div><div class="columnsfilter">-->
 			<select name="activation" id="select">
-				<option type="play">Malattia</option>
-				<option type="play">Tumore</option>
-			</select>
-			<select name="activation" id="select">
 				<option type="play">Settore Coinvolto</option>
 				<option type="play">Agricoltura</option>
                 <option type="play">Per conto dello Stato</option>
                 <option type="play">Industria e servizi</option>
-                <option type="play">Medici radiologi</option>
-                <option type="play">Infortuni domestici</option>
 			</select>
-			<select name="activation" id="select">
+			<!--<select name="activation" id="select">
 				<option type="play">Genere</option>
 				<option type="play">M</option>
                 <option type="play">F</option>
 			</select>
-            
+            -->
             <input type="date" value="date" id="date">
             <input type="date" value="date" id="date">
 			</select>
 			</div>
-			
+			<input type="checkbox" id="select"> Tumore
+            <input type="checkbox" id="select"> Morto
 			<input type="checkbox" id="select"> Amianto
 		</form>
 		<!--</div>-->
