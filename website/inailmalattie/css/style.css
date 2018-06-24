@@ -12,16 +12,13 @@ body {
     color: #333;
     background-color: #fff;
 }
-html, body{
-    height: 100%;
-}
+
 .navbar {
 	position: fixed;
 	width: 100%;
 	background-color: #222;
     border-color: #080808;
 	min-height:50px;
-	z-index:1;
 }
 
 
@@ -67,10 +64,7 @@ h1.title {
 }
 
 #filter{
-	width: 70%;
-    margin: auto;
-	padding-bottom: 20px;
-    padding-top: 20px;
+	padding: 0 0 0 20px;
 }
 
 /*caso implementazione 2 colonne*/
@@ -88,11 +82,10 @@ h1.title {
 
 /* MAP */
 #map{
-	margin: auto;
+	margin: 10px 0 15px 20px;
 	position:relative;
-	height: 65%;
-	width: 70%;
-	z-index:0;
+	height: 300px;
+	width: 70%
 }
 
 
@@ -143,13 +136,19 @@ h1.title {
 
 @media screen and (max-width : 768px){
 	
+	body{
+		padding: 0 15px 0 0;
+	}
+	
 	#title{
 		margin-right:25px;
 		font-size: 5.5vw;
 	}
 	
-	#filter > #select {
-		width:100%
+	#select, #date {
+		vertical-align: bottom;
+		position:relative;
+		*overflow: hidden; /*impostazione per IE*/
 	}
 
 	.toggle-menu{
