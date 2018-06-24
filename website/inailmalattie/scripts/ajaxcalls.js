@@ -6,8 +6,8 @@
 		var amianto = 0;
 		var morto = 0;
 		var tumore = 0;
-		var dataI = 0;
-		var dataF = 0;
+		var dataInizio = 0;
+		var dataFine = 0;
 		var markers = L.markerClusterGroup({ chunkedLoading: true }); //creo il cluster	
 		serverURL = "server/handler.php" 
 		loadData();
@@ -25,22 +25,17 @@
 				tumore = 1;
 			}else
 				tumore = 0;
-			dataI = parseDate(new Date($("#dataI").val()));
-			dataF = parseDate(new Date($("#dataF").val()));
-			console.log(dataI);
+			dataInizio = parseDate(new Date($(".dataI").val()));
+			dataFine = parseDate(new Date($(".dataF").val()));
+			if(dataInizio == 0 || dataFine == 0)
+				alert("Non hai selezionato la data finale!");
 			filterData();
 		})
 		
-		
 		function parseDate(date){
-			if(typeof date == undefined)
-				return 0;
-			var day = date.getDate();
-			var month = date.getMonth()+1;
-			var year = date.getFullYear();
-			var data = [year,month,day].join('-');
-			//var data = year+"-"+month+"-"+day;
-			console.log("Parsedata: " + data);
+			if(isNaN(date))
+				return data = 0;
+			data = [date.getFullYear(),date.getMonth()+1,date.getDate()].join('-');
 			return data;
 		}
 			
@@ -93,8 +88,8 @@
 			console.log("amianto: " + amianto); //qui bisogna prendere il valore del filtro da jquery (metto 1 solo per i test)
 			console.log("tumore: " + tumore); 
 			console.log("morto: " + morto); 
-			var dataInizio=0;
-			var dataFine=0;
+			console.log("dataI: " + dataInizio);
+			console.log("dataF: " + dataFine);
 			
 			$.ajax({
 				url: serverURL,
