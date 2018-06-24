@@ -63,6 +63,8 @@
 			
 			function handleFilter(data){
 				console.log("handleLoad");
-				//data a questo punto è un array che contiene elementi ognuno con latitudine, longitudine e count. 
+				//data a questo punto è un array che contiene elementi ognuno con latitudine, longitudine, settore e count.
+				//bisogna quindi gestire il fatto del settore: se il filtro è attivato si fa apparire di colore diverso
+				//i vari settori, altrimenti tutto normale
 			}
 })(jQuery);
