@@ -21,6 +21,7 @@ body {
 	min-height:50px;
 }
 
+
 .container {
 	height:50px;
 	width: 95%;
@@ -93,34 +94,18 @@ h1.title {
 	margin: 10px 0 0 20px;
 }
 /* 360x640 galaxy s5 */
-@media screen and (max-width : 768px){
-	#menu-secondary{
-		float: left;
-	}
-	
-	#filter > #select {
-		width:100%
-	}
-
-
-}
-
-
-	/*TODO: aggiungere un menù con gli elementi scomparsi*/
 
 .toggle-menu{
     display: none; 
     width: 28px;
     height: 28px;
-    position: absolute;
-    top: 14px;
-    right: 5px;
+	padding: 5px 0 0 15px;
 }
 .navbar span{
     position: relative;
     display: block;
 }
-.navbar span, .navbar span:before, .navbar span:after{
+.navbar span, .navbar span:before, .navbar span:after{ /*before inserisce qualcosa dopo il contenuto selezionato*/
     width: 100%;
     height: 4px;  
     background-color: #fff;
@@ -148,8 +133,20 @@ h1.title {
     transform: rotate(-45deg) translate(6px, -7px);
 }
 
+
 @media screen and (max-width : 768px){
-    .toggle-menu{
+	
+	#title{
+		margin-right:25px;
+		font-size: 5.5vw;
+	}
+	
+	#filter > #select {
+		width:100%
+	}
+
+	.toggle-menu{
+		margin: 8px 0 0 10px;
         display: block;
         
     }
@@ -157,18 +154,30 @@ h1.title {
 		display: none;
 	}
 
-.navbar .container {
-		width: 96%;
-}
-	
-.menu-mobile {
-		display: block !important;
-		left: 0;
-		top: 50px;
-		background: #222;
-		width: 100%;
-		list-style-type: none;
-		height: 50px;
-}
-	    
+
+	.navbar .container {
+			height: 50%;
+			width: 96%;
+	}
+
+	.container ul li{
+		position: relative;
+		min-width: 70%;
+		top: 20px;
+	}
+		
+	.menu-mobile {
+			display: block !important;
+			left: 0;
+			top: 50px;
+			background: #222;
+			width: 100%;
+			list-style-type: none;
+			
+	}
+
+	.menu-mobile li{
+		position:relative;
+	}
+
 }
