@@ -64,7 +64,10 @@ h1.title {
 }
 
 #filter{
-	padding: 0 0 0 20px;
+	width: 70%;
+    margin: auto;
+	padding-bottom: 20px;
+    padding-top: 20px;
 }
 
 /*caso implementazione 2 colonne*/
@@ -82,7 +85,7 @@ h1.title {
 
 /* MAP */
 #map{
-	margin: 10px 0 15px 20px;
+	margin: auto;
 	position:relative;
 	height: 300px;
 	width: 70%
