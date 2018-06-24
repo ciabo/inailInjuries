@@ -36,4 +36,20 @@ for (var i = 0; i < addressPoints.length; i++) {
 
 map.addLayer(markers); // aggiungo I marcatori
 
+//jQuery
+
+(function($){
+	console.log("jQuery: " + $);
 	
+	$(document).ready(function(){
+			$(".toggle-menu").on("click", function() {
+  				$(this).toggleClass("on");
+                $("#menu-secondary li").appendTo("#menu-primary"); //sposto contacts insieme agli altri
+				$("#menu-primary").toggleClass("menu-mobile"); //toggleClass sostituisce il campo class di "#.."
+				return false;
+			 });
+		}   
+	);
+	
+	
+})(jQuery);
