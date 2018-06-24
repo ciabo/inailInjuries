@@ -34,7 +34,7 @@
 			</div>
 		</nav>
 		<div class="containermain">
-			<h1 id="title" align="center" class="title">Analisi malattie dei lavoratori italiani</h1>
+			<h1 id="title" align="center" class="title">Analisi malattie dei lavoratori per regione</h1>
 		</div>
 		<form id="filter">
 		<!--</div><div class="columnsfilter">-->
@@ -47,14 +47,17 @@
             <input type="date" value="date" id="date">
             <input type="date" value="date" id="date">
 			</select>
+			<div>
+			<input type="checkbox" id="select"> Tumore
+            </div>
+			<div>
+			<input type="checkbox" id="select"> Morto
 			</div>
-			<div><input type="checkbox" id="select"> Tumore</div>
-            <div><input type="checkbox" id="select"> Morto</div>
-			<div><input type="checkbox" id="select"> Amianto</div>
+			<div>
+			<input type="checkbox" class="amianto" id="select"> Amianto
+			</div>
+			<input type="button" value="Applica filtri" id="filtra"/>
 		</form>
-		<!--</div>-->
-        <!--<button type="button" onclick="alert('Ok!')" id="button">Ok</button>-->
-    </div>
 		<!--<div class="columns"> evntuale implementazione 2 colonne da sistemare-->
 			
 			<div id="map"></div>
@@ -65,6 +68,7 @@
 			<script type= "text/javascript" src="https://unpkg.com/leaflet.markercluster@1.3.0/dist/leaflet.markercluster.js"></script>
 			<script type= "text/javascript" src="scripts\realworld.10000.js"></script>
 			<script type="text/javascript" src="scripts\improvements.js"></script>
+			<script type="text/javascript" src="scripts\ajaxcalls.js"></script>
 		
 			
 			<div class="descrizione">
