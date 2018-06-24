@@ -12,13 +12,16 @@ body {
     color: #333;
     background-color: #fff;
 }
-
+html, body{
+    height: 100%;
+}
 .navbar {
 	position: fixed;
 	width: 100%;
 	background-color: #222;
     border-color: #080808;
 	min-height:50px;
+	z-index:1;
 }
 
 
@@ -87,8 +90,9 @@ h1.title {
 #map{
 	margin: auto;
 	position:relative;
-	height: 300px;
-	width: 70%
+	height: 65%;
+	width: 70%;
+	z-index:0;
 }
 
 
