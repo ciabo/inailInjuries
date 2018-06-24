@@ -37,26 +37,24 @@
 			<h1 id="title" align="center" class="title">Analisi malattie dei lavoratori per regione</h1>
 		</div>
 		<form id="filter">
-		<!--</div><div class="columnsfilter">-->
+		<!--</div><div class="columnsfilter">
 			<select name="activation" id="select">
 				<option type="play">Settore Coinvolto</option>
 				<option type="play">Agricoltura</option>
                 <option type="play">Per conto dello Stato</option>
                 <option type="play">Industria e servizi</option>
-			</select>
+			</select>-->
+			
+			<!-- Sarebbe carino che quando si passa col mouse sopra i box per la data appaia
+			una scritta che dica: "Inserire le date per visualizzare i casi in un intervallo di tempo -->
             <input type="date" value="date" id="date">
             <input type="date" value="date" id="date">
 			</select>
-			<div>
-			<input type="checkbox" id="select"> Tumore
-            </div>
-			<div>
-			<input type="checkbox" id="select"> Morto
 			</div>
-			<div>
-			<input type="checkbox" class="amianto" id="select"> Amianto
-			</div>
-			<input type="button" value="Applica filtri" id="filtra"/>
+			<div><input type="checkbox" id="select"> Visualizza per settori</div>
+			<div><input type="checkbox" id="select"> Visualizza solo i casi di tumore</div>
+            <div><input type="checkbox" id="select"> Visualizza solo i casi di morte</div>
+			<div><input type="checkbox" id="select"> Visualizza solo i casi legati all'amianto</div>
 		</form>
 		<!--<div class="columns"> evntuale implementazione 2 colonne da sistemare-->
 			
