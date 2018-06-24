@@ -27,8 +27,14 @@
 				tumore = 0;
 			dataInizio = parseDate(new Date($(".dataI").val()));
 			dataFine = parseDate(new Date($(".dataF").val()));
-			if(dataInizio == 0 || dataFine == 0)
-				alert("Non hai selezionato la data finale!");
+			if(dataInizio != 0)
+				if(dataFine == 0)
+					alert("Non hai selezionato la data finale!");
+				/*else{
+					if (dataInizio.substring(0,4) < dataFine.substring(0,4){
+						//mettere controllo data
+					}
+				}*/
 			filterData();
 		})
 		
