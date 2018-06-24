@@ -57,7 +57,7 @@
 			( $tumore==1 ? "JOIN tumori on datisemestrali.ICD10denunciato=tumori.id" : "" ) ."
 			WHERE ". (($morto==1) ? " datisemestrali.dataMorte is not NULL" : "datisemestrali.dataMorte is not NULL or datisemestrali.dataMorte is NULL") ."
 			".($amianto==1 ? "AND datisemestrali.asbestoCorrelata=1" : "") ."
-			". ($dataInizio!=0 ? "AND datisemestrali.data>\'".$dataInizio."\' AND datisemestrali.data<\'".$dataFine."\'" : "" )." GROUP BY singolesedi.latitudineProvincia, singolesedi.longitudineProvincia,settore";
+			". ($dataInizio!=0 ? "AND datisemestrali.data>'".$dataInizio."' AND datisemestrali.data<'".$dataFine."'" : "" )." GROUP BY singolesedi.latitudineProvincia, singolesedi.longitudineProvincia,settore";
 			fwrite($myfile, $query);
 			
 			
