@@ -5,26 +5,14 @@
 		<meta charset="UTF-8">
 		<meta name="keywords" content="inail malattie"/>
 		<meta name="description" content="statistiche malattie"/>
+		<meta name="viewport" content="width=device-width"> <!-- meta necessario per far funzionare le media-query-->
 		<link href="css/style.css" rel="stylesheet" type="text/css"/>
 		<script type="text/javascript" src="scripts\jquery-3.3.1.min.js"></script>
 		<script language="javascript" type="text/javascript"></script>
-    
-        <script type="text/javascript">
-		$(document).ready(function(){
-			$(".toggle-menu").on("click", function() {
-  				$(this).toggleClass("on");
-                $("#menu-primary").toggleClass("menu-mobile");
-  				$("#menu-secondary").toggleClass("menu-mobile");
-  				return false;
-			 });
-		  });
- 
-        </script>
-    
-    </head>
+	</head>
 	
 	<body>
-		<nav class="navbar" id="navb">
+		<nav class="navbar">
 			<div class="container">
 				<ul id="menu-primary">
 					<li><a href="https://github.com/ciabo/inailInjuries/blob/master/website/inailmalattie/aboutus.html">About us</a></li>
@@ -38,19 +26,15 @@
 						</div>
 					</li>
 				</ul>
-        <a href="#" class="toggle-menu hidden-lg" id="togmen">
-            <span>
-            
-            </span>
-        </a>
+				<a href="#" class="toggle-menu" id="togmen">
+					<span>
+					<!-- linee per menu mobile-->
+					</span>
+				</a>
 			</div>
 		</nav>
 		<div class="containermain">
-			<h1 align="center" class="title">Analisi malattie dei lavoratori per regione</h1>
-		</div>
-		
-		<div class="tinymenu">
-			<!-- menu per risoluzioni inferiore a 360-->
+			<h1 id="title" align="center" class="title">Analisi malattie dei lavoratori per regione</h1>
 		</div>
 		<form id="filter">
 		<!--</div><div class="columnsfilter">-->
@@ -59,13 +43,9 @@
 				<option type="play">Agricoltura</option>
                 <option type="play">Per conto dello Stato</option>
                 <option type="play">Industria e servizi</option>
+                <option type="play">Medici radiologi</option>
+                <option type="play">Infortuni domestici</option>
 			</select>
-			<!--<select name="activation" id="select">
-				<option type="play">Genere</option>
-				<option type="play">M</option>
-                <option type="play">F</option>
-			</select>
-            -->
             <input type="date" value="date" id="date">
             <input type="date" value="date" id="date">
 			</select>
