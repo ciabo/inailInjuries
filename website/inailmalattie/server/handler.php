@@ -2,9 +2,9 @@
 	header('Content-Type: text/json');
 	require_once("config.php");
 	$action = $_POST['action'];
+	
 	switch($action) {
 		case "load" :
-
 			loadData();
 		break;
 		case "filter" :
@@ -52,12 +52,12 @@
 			$dataFine=$_POST['dataFine'];//una data oppure 0
 			$morto=$_POST['morto']; //morto può essere 1 (se il filtro è attivo) oppure zero
 			
-			$query = "SELECT singolesedi.latitudineProvincia, singolesedi.longitudineProvincia, count(*) AS count 
+			$query = "SELECT singolesedi.latitudineProvincia, singolesedi.longitudineProvincia,settore, count(*) AS count 
 			FROM datisemestrali JOIN singolesedi on datisemestrali.sedeInail=singolesedi.codice ".
 			( $tumore==1 ? "JOIN tumori on datisemestrali.ICD10denunciato=tumori.id" : "" ) ."
 			WHERE ". (($morto==1) ? " datisemestrali.dataMorte is not NULL" : "datisemestrali.dataMorte is not NULL or datisemestrali.dataMorte is NULL") ."
 			".($amianto==1 ? "AND datisemestrali.asbestoCorrelata=1" : "") ."
-			". ($dataInizio!=0 ? "AND datisemestrali.data>\'".$dataInizio."\' AND datisemestrali.data<\'".$dataFine."\'" : "" )." GROUP BY singolesedi.latitudineProvincia, singolesedi.longitudineProvincia";
+			". ($dataInizio!=0 ? "AND datisemestrali.data>\'".$dataInizio."\' AND datisemestrali.data<\'".$dataFine."\'" : "" )." GROUP BY singolesedi.latitudineProvincia, singolesedi.longitudineProvincia,settore";
 			fwrite($myfile, $query);
 			
 			
@@ -68,7 +68,8 @@
 				$latitudine = $row['latitudineProvincia'];
 				$longitudine = $row['longitudineProvincia'];
 				$count = $row['count'];
-				$dataElement = array("latitudine" => $latitudine,"longitudine" =>$longitudine, "count" => $count);
+				$settore = $row['settore'];
+				$dataElement = array("latitudine" => $latitudine,"longitudine" =>$longitudine,"settore" => $settore, "count" => $count);
 				array_push($data, $dataElement);
 			}
 		
