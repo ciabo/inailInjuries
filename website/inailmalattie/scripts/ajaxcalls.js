@@ -1,12 +1,15 @@
 // JavaScript Document
 
+//var markers = L.markerClusterGroup({ chunkedLoading: true }); //creo il cluster
+//var marks = L.markerClusterGroup({ chunkedLoading: true }); //creo il cluster per filtri
 (function($){
 		var amianto = 0;
 		var morto = 0;
 		var tumore = 0;
 		var dataInizio = 0;
 		var dataFine = 0;
-		var markers = L.markerClusterGroup({ chunkedLoading: true }); //creo il cluster	
+		var markers = L.markerClusterGroup({ chunkedLoading: true }); //creo il cluster	dell'handle
+		var marks = L.markerClusterGroup({ chunkedLoading: true }); //creo il cluster	del filter
 		serverURL = "server/handler.php" 
 		loadData();
 		//AGGIUNGERE I GESTORI DI EVENTI SUI PULSANTI !!
@@ -24,6 +27,7 @@
 						//mettere controllo data
 					}
 				}*/
+			marks.clearLayers();
 			filterData();
 		})
 		
@@ -60,20 +64,46 @@
 		
 		function handleLoad(data) {
 			console.log("handleLoad");
-			console.log(data); //è un array		
+			console.log(data); //è un array	
+			filterData(); //chiamo filter con tutti i filtri disattivati
 			//console.log(data[0]); //oggetto con lat lng e count	
-			markers = L.markerClusterGroup({ chunkedLoading: true }); //creo il cluster
+			/*markers = L.markerClusterGroup({iconCreateFunction: function(cluster) {
+					// iterate all markers and count
+					var markers = cluster.getAllChildMarkers();
+					var weight = 0;
+					for (var i = 0; i < markers.length; i++) {
+						if(markers[i].options.hasOwnProperty("customWeight")){
+						weight += parseInt(markers[i].options.customWeight);      
+						var a =1;
+					  }
+					}
+					var c = ' marker-cluster-';
+					if (weight < 2000) {
+						c += 'small';
+					} else if (weight < 4000) {
+						c += 'medium';
+					} else {
+						c += 'large';
+					}
+					// create the icon with the "weight" count, instead of marker count
+					return L.divIcon({ 
+						html: '<div><span>' + weight + '</span></div>',
+						className: 'marker-cluster' + c, iconSize: new L.Point(40, 40)
+					});
+				}
+			});//creo il cluster
 			for (var i = 0; i < data.length; i++) {
 				var a = data[i]; 
 				var lat = a.latitudine;
 				var lng = a.longitudine;
 				var count = a.count;
-				var marker = L.marker(L.latLng(lat, lng), { count: count }); //creo marker con coordinate del vettore
-				marker.bindPopup(count); //metodo per far apparire il titolino sul cursore
-				markers.addLayer(marker); //aggiungo il marcatore
+				var marker=new weightMarker([lat, lng], { customWeight: count });
+				marker.bindPopup(count);
+				markers.addLayer(marker);
+	
 			}
-
-			map.addLayer(markers); // aggiungo I marcatori
+			map.addLayer(markers);
+			 // aggiungo I marcatori*/
 		}
 		
 		
@@ -107,17 +137,44 @@
 			//data a questo punto è un array che contiene elementi ognuno con latitudine, longitudine e count. 
 			data = data.data;
 			console.log(data);
-			var marks = L.markerClusterGroup({ chunkedLoading: true, animate: true, animateAddingMarkers: true }); //creo il cluster
+			marks = L.markerClusterGroup({iconCreateFunction: function(cluster) {
+					// iterate all markers and count
+					var markers = cluster.getAllChildMarkers();
+					var weight = 0;
+					for (var i = 0; i < markers.length; i++) {
+						if(markers[i].options.hasOwnProperty("customWeight")){
+						weight += parseInt(markers[i].options.customWeight);      
+						var a =1;
+					  }
+					}
+					var c = ' marker-cluster-';
+					if (weight < 2000) {
+						c += 'small';
+					} else if (weight < 4000) {
+						c += 'medium';
+					} else {
+						c += 'large';
+					}
+					// create the icon with the "weight" count, instead of marker count
+					return L.divIcon({ 
+						html: '<div><span>' + weight + '</span></div>',
+						className: 'marker-cluster' + c, iconSize: new L.Point(40, 40)
+					});
+				}
+			});//creo il cluster
 			for (var i = 0; i < data.length; i++) {
 				var a = data[i]; 
 				var lat = a.latitudine;
 				var lng = a.longitudine
 				var count = a.count;
-				var marker = L.marker(L.latLng(lat, lng), { count: count }); //creo marker con coordinate del vettore
-				marker.bindPopup(count); //metodo per far apparire il titolino sul cursore
-				marks.addLayer(marker); //aggiungo il marcatore
+				var settore = a.settore;
+				var string = settore +" : "+count;
+				var marker=new weightMarker([lat, lng], { customWeight: count });
+				marker.bindPopup(string);
+				marks.addLayer(marker);
 			}
 			//trovare un modo per aggiungere un minimo di ritardo per enfatizzare il cambiamento dei marcatori sulla mappa
+			markers.clearLayers();
 			map.addLayer(marks); // aggiungo I marcatori*/
 		}
 })(jQuery);
@@ -132,3 +189,9 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
     accessToken: 'pk.eyJ1IjoiOWV0dG9yZTYiLCJhIjoiY2ppb3FpOXlxMGM5ODN2dDl6Mjh2cTUwOCJ9.QoSRENS3F5CVJSIjLywTxg'
 }).addTo(map);
 
+var weightMarker = L.Marker.extend({
+   options: { 
+	
+      customWeight: 0
+   }
+});
