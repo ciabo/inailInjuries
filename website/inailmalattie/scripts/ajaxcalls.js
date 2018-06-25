@@ -1,7 +1,5 @@
 // JavaScript Document
 
-//var markers = L.markerClusterGroup({ chunkedLoading: true }); //creo il cluster
-//var marks = L.markerClusterGroup({ chunkedLoading: true }); //creo il cluster per filtri
 (function($){
 		var amianto = 0;
 		var morto = 0;
@@ -13,18 +11,9 @@
 		loadData();
 		//AGGIUNGERE I GESTORI DI EVENTI SUI PULSANTI !!
 		$("#filtra").on('click', function(){
-			if($(".amianto").is(":checked")){
-				amianto = 1;
-			}else
-				amianto = 0;
-			if($(".morto").is(":checked")){
-				morto = 1;
-			}else
-				morto = 0;
-			if($(".tumore").is(":checked")){
-				tumore = 1;
-			}else
-				tumore = 0;
+			amianto = $(".amianto").is(":checked") ? 1 : 0;
+			morto = $(".morto").is(":checked") ? 1 : 0;
+			tumore = $(".tumore").is(":checked") ? 1 : 0;
 			dataInizio = parseDate(new Date($(".dataI").val()));
 			dataFine = parseDate(new Date($(".dataF").val()));
 			if(dataInizio != 0)
