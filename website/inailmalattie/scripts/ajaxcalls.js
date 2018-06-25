@@ -137,6 +137,7 @@
 			//data a questo punto è un array che contiene elementi ognuno con latitudine, longitudine e count. 
 			data = data.data;
 			console.log(data);
+			console.log(data.settore);
 			marks = L.markerClusterGroup({iconCreateFunction: function(cluster) {
 					// iterate all markers and count
 					var markers = cluster.getAllChildMarkers();
@@ -160,7 +161,7 @@
 						html: '<div><span>' + weight + '</span></div>',
 						className: 'marker-cluster' + c, iconSize: new L.Point(40, 40)
 					});
-				}
+				}//dim marker:50x82
 			});//creo il cluster
 			for (var i = 0; i < data.length; i++) {
 				var a = data[i]; 
@@ -168,9 +169,42 @@
 				var lng = a.longitudine
 				var count = a.count;
 				var settore = a.settore;
-				var string = settore +" : "+count;
-				var marker=new weightMarker([lat, lng], { customWeight: count });
-				marker.bindPopup(string);
+				var agricolturaIcon = L.icon({
+					iconUrl: 'img/agricoltura.png',
+					//shadowUrl: 'leaf-shadow.png',
+
+					iconSize:     [70, 70], // size of the icon
+					//shadowSize:   [50, 64], // size of the shadow
+					iconAnchor:   [45, 68], // point of the icon which will correspond to marker's location
+					//shadowAnchor: [4, 62],  // the same for the shadow
+					popupAnchor:  [-3, -45] // point from which the popup should open relative to the iconAnchor
+				});
+				var industriaIcon = L.icon({
+					iconUrl: 'img/industria.png',
+					iconSize:     [70, 70], // size of the icon
+				});
+				var statoIcon = L.icon({
+					iconUrl: 'img/stato.png',
+					iconSize:     [70, 70], // size of the icon
+					iconAnchor:   [10, 30],
+					popupAnchor:  [25, 0]
+				});
+				
+				console.log(settore);
+				switch(settore){
+					case 'Agricoltura':
+						
+						var marker=new weightMarker([lat, lng], { customWeight: count,  icon: agricolturaIcon });
+						break;
+					case 'Industria':
+						var marker=new weightMarker([lat, lng], { customWeight: count,  icon: industriaIcon });
+						break;
+					case 'Statale':
+						var marker=new weightMarker([lat, lng], { customWeight: count,  icon: statoIcon });
+						break;
+				}
+				//var marker=new weightMarker([lat, lng], { customWeight: count});
+				marker.bindPopup(count);
 				marks.addLayer(marker);
 			}
 			//trovare un modo per aggiungere un minimo di ritardo per enfatizzare il cambiamento dei marcatori sulla mappa
@@ -191,7 +225,6 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 
 var weightMarker = L.Marker.extend({
    options: { 
-	
       customWeight: 0
    }
 });
