@@ -114,7 +114,7 @@ h1.title {
     position: relative;
     display: block;
 }
-.navbar span, .navbar span:before, .navbar span:after{ /*before inserisce qualcosa dopo il contenuto selezionato*/
+.navbar span, .navbar span:before, .navbar span:after{ 
     width: 100%;
     height: 4px;  
     background-color: #fff;
@@ -141,8 +141,41 @@ h1.title {
 .on span:after {
     transform: rotate(-45deg) translate(6px, -7px);
 }
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 711px;
+    top: -151px;
+    right: 100px;
+    width: 100%;
+    height: 100%;
+    /*overflow: auto;*/
+    background-color: rgb(0,0,0);
+    background-color: transparent;
+    
+    
+}
+.modal-content{
+    background-color:#222;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 0px solid #888;
+    margin-left: 200px;
+    animation-name: modalopen;
+    animation-duration: 2s;
+    width: 30%;
+}
 
-
+ #p1{
+    padding-bottom: 20px;
+    font-style: italic;
+     color: gray;
+}
+@keyframes modalopen{
+    from{opacity: 0}
+    to{opacity: 1}
+}
 @media screen and (max-width : 768px){
 	
 	body{
@@ -194,5 +227,12 @@ h1.title {
 	.menu-mobile li{
 		position:relative;
 	}
+    .modal{
+        position: relative;
+        margin-left: -816px;
+        top: 15px;
+        
+    }
 
 }
+
