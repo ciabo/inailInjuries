@@ -18,3 +18,29 @@
 	);
 	
 })(jQuery);
+var modal = document.getElementById('myModal');
+
+// pigiando su contacts si apre il modal
+var contact = document.getElementById('contacts');
+var togmen= document.getElementById('togmen');
+// toggle menu è l'elemento che chiude il menu pigiandoci soopra
+var span = document.getElementsByClassName("toggle-menu")[0];
+contact.addEventListener('click',openModal);
+span.addEventListener('click',closeModal);
+window.addEventListener('click',outsideClick);            
+function openModal(){
+    
+    modal.style.display='block';
+    
+}
+function closeModal(e){
+    if(e.target!=togmen)
+        modal.style.display='none';
+    else
+        if(e.target==modal)
+            modal.style.display='none';    
+}
+function outsideClick(e){
+    if(e.target==modal)
+        modal.style.display='none';
+}
