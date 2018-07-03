@@ -1,0 +1,16 @@
+2018-10-1set @num := 0, @type := '', @type2 := '', @type3 := '';SELECT descrizione, lat, lon,settore, icd, conto, @num := if(@type = lat and @type2 = lon and @type3 = settore, @num + 1, 1) as row_number, @type := lat, @type2 := lon, @type3 := settore 
+			FROM ( SELECT singolesedi.latitudineProvincia AS lat, singolesedi.longitudineProvincia as lon, settore,datisemestrali.ICD10denunciato as icd, count(*) as conto 
+			FROM datisemestrali JOIN singolesedi on datisemestrali.sedeInail=singolesedi.codice 
+			
+			WHERE datisemestrali.ICD10denunciato<>'ND' AND datisemestrali.dataMorte is not NULL or datisemestrali.dataMorte is NULL
+			
+			AND datisemestrali.data>'2010-10-1' AND datisemestrali.data<'2018-10-1'
+			GROUP BY singolesedi.latitudineProvincia, singolesedi.longitudineProvincia,settore,ICD10denunciato 
+			ORDER BY singolesedi.latitudineProvincia, singolesedi.longitudineProvincia, settore, conto DESC)as a
+			LEFT JOIN codici on a.icd = codici.id
+			HAVING row_number = 1 OR row_number = 2 OR row_number = 3
+			ORDER BY lat, lon, settore, row_number ASC;946SELECT singolesedi.latitudineProvincia, singolesedi.longitudineProvincia,settore, count(*) AS count, SUM(datisemestrali.sesso) as numeroMaschi 
+			FROM datisemestrali JOIN singolesedi on datisemestrali.sedeInail=singolesedi.codice
+			WHERE datisemestrali.ICD10denunciato<>'ND' AND datisemestrali.dataMorte is not NULL or datisemestrali.dataMorte is NULL
+			
+			AND datisemestrali.data>'2010-10-1' AND datisemestrali.data<'2018-10-1' GROUP BY singolesedi.latitudineProvincia, singolesedi.longitudineProvincia,settore9439409379349319289259229199169139109079049018988958928898868838808778748718688658628598568538508478448418388358328298268238208178148118088058027997967937907877847817787757727697667637607577547517497467437407377347317287257227197167137107077047016986956926896866836806776746716686656626596566536506476446426396366336306276246216186156126096066036005975945915885855825795765735705675645615585555525495465435405375345315285255225195165135105075045014984954924894864834804774744714684654624594564534504474444414384354324294264234204174144114084054023993963933903873843813783753733703673643613583553523493463433403373343313283253223193163133103073043012982952922892862832802772742712682652622592562532502472442412382352322292262232202172142112082052021991961931901871841811781751721691661631601571541511481451421391361331301271241211181151121091061031009996939087848178757269666360575451484542393633302724211815129630

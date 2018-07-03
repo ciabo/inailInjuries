@@ -14,76 +14,66 @@
 		<nav class="navbar">
 			<div class="container">
 				<ul id="menu-primary">
+					<li><a href="#">Home</a></li>
 					<li><a href="aboutus.html">About us</a></li>
 					<li><a href="https://dati.inail.it/opendata/default/Daticadenzasemestralemp/index.html">Sources</a></li>
-					<li><a href="#">Portfolio</a></li>
 				</ul>
-				
-				<ul id="menu-secondary">
-					<li>
-						<a href="#" id="contacts">Contacts</a>
-						
-					</li>
-				</ul>
+			
                 </div>
-                <div id="myModal" class="modal">
-                <div class="modal-content">
-                    <!--<span class="closeBtn">&times;</span>-->
-                    <!--<p id="p1">Tommaso Fioravanti: tommaso.fioravanti@gmail.com</p>
-                    <p id="p1">Tommaso Fioravanti: tommaso.fioravanti@gmail.com</p>
-                    <p id="p1">Tommaso Fioravanti: tommaso.fioravanti@gmail.com</p>
-                  -->
-                    <ul>
-                        <li id="p1">Tommaso Fioravanti: tommaso.fioravanti@stud.unifi.it</li>
-                        <li id="p1">Ettore Celozzi: ettore.celozzi@stud.unifi.it</li>
-                        <li id="p1">Luca Ciabini: luca.ciabini1@stud.unifi.it</li>
-                    
-                    </ul>
-                    </div>
-                </div>    
-				<a href="#" class="toggle-menu" id="togmen">
+                    <a href="#" class="toggle-menu" id="togmen">
 					<span>
 					<!-- linee per menu mobile-->
 					</span>
 				</a>
-		</nav>
+		</nav>   
+
 		<div class="containermain">
 			<h1 id="title" align="center" class="title">Analisi malattie dei lavoratori italiani</h1>
 		</div>
  		<form id="filter">
-		<!--</div><div class="columnsfilter">-->
-			<!--<select name="activation" id="select">
-				<option type="play">Settore Coinvolto</option>
-				<option type="play">Agricoltura</option>
-                <option type="play">Per conto dello Stato</option>
-                <option type="play">Industria e servizi</option>
-			</select>-->
-            <input type="date" value="date" class="dataI" id="date">
-			<input type="date" value="date" class="dataF" id="date">
-			<div><input type="checkbox" class="tumore" id="select">Visualizza solo i casi di tumore</div>
-			<div><input type="checkbox" class="morto" id="select"> Visualizza solo i casi di morte</div>
+            <div>Pratiche attive per data di denuncia
+				<input type="month" class="dataI" id="date" value="2010-10">
+				<input type="month" class="dataF" id="date" value="2018-10">
+				<input type="checkbox" class="block" id="select"> Disattiva filtro				
+			</div>
+			<div><select name="settori" class="settori">
+				<option value = "0">Nessuno</option>
+				<option value = "1">Agricoltura</option>
+				<option value = "2">Industria</option>
+				<option value = "3">Statale</option>
+			</select> Filtra per settore</div> 
+			<div><input type="checkbox" class="tumore" id="select"> Visualizza solo i casi di tumore</div>
+			<div><input type="checkbox" class="morto" id="select"> Visualizza solo pratiche deceduti</div>     
+			<div>Visualizza decessi dal
+				<input type="month" class="dataIM" id="dateM" value="2010-10">
+				al
+				<input type="month" class="dataFM" id="dateM" value="2018-10">
+			</div>
 			<div><input type="checkbox" class="amianto" id="select">Visualizza solo i casi legati all'amianto</div>
 			<input type="button" value="Applica filtri" id="filtra"/>
+			<input type="button" value="Rimuovi tutti i filtri" id="remove"/>
 		</form>
 		<!--<div class="columns"> evntuale implementazione 2 colonne da sistemare-->
-			
-			<div id="map"></div>
-			<link href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" rel="stylesheet" type="text/css"/> <!-- mettere bower se non funziona-->
-			<script type="text/javascript" src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script> <!-- mettere bower se non funziona-->
+		<!-- caso in locale-->
+			<div id="map"></div> 
+			<link href="leaflet\leaflet.css" rel="stylesheet" type="text/css"/>  
+			<script type="text/javascript" src="leaflet\leaflet.js"></script> 	
+			<link href="markercluster\MarkerCluster.css" rel="stylesheet" type="text/css">
+			<link href="markercluster\MarkerCluster.Default.css" rel="stylesheet" type="text/css">
+			<script type= "text/javascript" src="markercluster\leaflet.markercluster.js"></script>
+			<script type="text/javascript" src="scripts\improvements.js"></script>
+			<script type="text/javascript" src="scripts\ajaxcalls.js"></script>
+	
+		<!-- caso internet
+			<div id="map"></div> 
+			<link href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" rel="stylesheet" type="text/css"/> 
+			<script type="text/javascript" src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script> 
 			<link href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.css" rel="stylesheet" type="text/css">
 			<link href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.Default.css" rel="stylesheet" type="text/css">
 			<script type= "text/javascript" src="https://unpkg.com/leaflet.markercluster@1.3.0/dist/leaflet.markercluster.js"></script>
-			<script type= "text/javascript" src="scripts\realworld.10000.js"></script>
 			<script type="text/javascript" src="scripts\improvements.js"></script>
 			<script type="text/javascript" src="scripts\ajaxcalls.js"></script>
-		
-			
-			<div class="descrizione">
-				<p align="left">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-				Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-				dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-				non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p> 
-			</div>
+		-->
 				
 		<!--</div>-->
 		
